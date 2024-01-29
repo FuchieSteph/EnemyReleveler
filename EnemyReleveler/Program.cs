@@ -152,6 +152,8 @@ namespace EnemyReleveler
                     npc.Configuration.CalcMaxLevel = (short)newLevel;
                     break;
                 case LevelType.Level:
+                    if (newLevel == 0) return;
+
                     npc.Configuration.Level = new NpcLevel()
                     {
                         Level = (short)newLevel
