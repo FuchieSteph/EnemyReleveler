@@ -121,6 +121,7 @@ namespace EnemyReleveler
                     if (npc.Configuration.Level is INpcLevelGetter level) currentLevel = level.Level;
                     if (currentLevel < rule[0][0]) underleveledNpcs.Add(npc.EditorID ?? "");
                     if (currentLevel > rule[0][1]) overleveledNpcs.Add(npc.EditorID ?? "");
+                    if (currentLevel == 0) return; // Skip if current level is 0
                     break;
                 default:
                     break;
@@ -136,6 +137,7 @@ namespace EnemyReleveler
 
             if (newLevel < 1)
             {
+                if (newLevel == 0) return;
                 if (levelType == LevelType.Level) lowPoweredNpcs.Add(npc.EditorID ?? "");
                 newLevel = 1;
             }
