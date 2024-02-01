@@ -1,7 +1,5 @@
 {
 	"BanditFaction": [[1, 28], [4, 16]],
-	"SetteWE01BanditFactionFugitive": [[1, 28], [4, 16]],
-	"WE_SetteBanditFaction": [[1, 28], [4, 16]],
 	"DraugrFaction": [[1, 45], [16, 45]],
 	"DLC2CultistFaction": [[1, 46], [18, 46]],
 	"DragonPriestFaction": [[50, 60], [70, 90]],
@@ -47,15 +45,4 @@
 	"CWImperialFaction": [[1, 10], [10, 30]],
 	"CWSonsFaction": [[1, 10], [10, 30]],
 	"IsGuardFaction": [[1, 50], [10, 25]],
-	"HunterFaction": [[5, 15], [12, 12]],
-	"DremoraFaction": [[6, 46], [28, 50]],
-	"DLC2BenthicLurkerFaction": [[24, 54], [35, 55]],
-	"DLC2SeekerFaction": [[21, 42], [25, 45]],
-	"DLC2NetchFaction": [[25, 40], [20, 36]],
-	"DLC2TribalWerebearFaction": [[17, 17], [36, 36]],
-	"PenitusOculatusFaction": [[1, 100], [25, 25]],
-	"DA13AfflictedFaction": [[1, 40], [5, 45]],
-	"DA16OrcAmbushFaction": [[1, 25], [22, 22]],
-	"dunKilkreathFaction": [[1, 100], [15, 45]],
-	"KhajiitCaravanFaction": [[4, 30], [9, 35]]
 }
