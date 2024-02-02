@@ -8,7 +8,7 @@
         "exclusions": []
     },
     "Draugr": {
-        "rules": [[1, 45], [16, 45]],
+        "rules": [[1, 65], [16, 45]],
         "exclusions": []
     },
     "Cultist": {
