@@ -45,7 +45,7 @@
     },
     "Troll": {
         "rules": [[14, 22], [20, 28]],
-        "exclusions": []
+        "exclusions": ["TrollsInn"]
     },
     "Spider": {
         "rules": [[1, 17], [1, 6]],
@@ -77,7 +77,7 @@
     },
     "Dragon": {
         "rules": [[10, 100], [40, 100]],
-        "exclusions": ["DragonBridge"]  
+        "exclusions": ["DragonBridge", "Dragonsreach", "Dragonstar"]  
     },
     "SabreCat": {
         "rules": [[6, 12], [10, 18]],
