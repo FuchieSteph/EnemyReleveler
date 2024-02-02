@@ -160,7 +160,7 @@ namespace EnemyReleveler
                     break;
                 case LevelType.Level:
                     if (npc.Configuration.Level is INpcLevelGetter level) currentLevel = level.Level;
-                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}, Matched Faction: {ruleName}, Current Max Level: {currentLevel}, Expected Max Level: {rule[0][1]}";
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction} - Matched: {ruleName}, Level: {currentLevel}";
                     if (currentLevel < rule[0][0]) underleveledNpcs.Add(npcInfo);
                     if (currentLevel > rule[0][1]) overleveledNpcs.Add(npcInfo);
                     break;

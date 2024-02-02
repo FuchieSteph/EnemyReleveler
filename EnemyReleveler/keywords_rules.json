@@ -77,7 +77,7 @@
     },
     "Dragon": {
         "rules": [[10, 100], [40, 100]],
-        "exclusions": ["DragonBridge", "Dragonsreach", "Dragonstar"]  
+        "exclusions": ["DragonBridge", "Dragonsreach", "Dragonstar", "DragonBride"]  
     },
     "SabreCat": {
         "rules": [[6, 12], [10, 18]],
@@ -120,7 +120,7 @@
         "exclusions": []
     },
     "Thalmor": {
-        "rules": [[4, 50], [20, 45]],
+        "rules": [[1, 50], [20, 45]],
         "exclusions": []
     },
     "OrcFriend": {
@@ -196,7 +196,7 @@
         "exclusions": []
     },
     "Netch": {
-        "rules": [[25, 40], [20, 36]],
+        "rules": [[10, 40], [20, 36]],
         "exclusions": []
     },
     "TribalWerebear": {
