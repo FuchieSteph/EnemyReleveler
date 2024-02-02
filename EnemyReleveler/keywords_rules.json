@@ -131,7 +131,11 @@
         "rules": [[1, 44], [14, 22]],
         "exclusions": []
     },
-    "Hunter": {
+    "HunterPrey": {
+        "rules": [[1, 10], [1, 10]],
+        "exclusions": []
+    },
+	"Hunter": {
         "rules": [[5, 50], [22, 50]],
         "exclusions": []
     },
