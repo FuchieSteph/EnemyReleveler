@@ -61,9 +61,11 @@ namespace EnemyReleveler
                 throw new Exception("Settings could not be found!");
 
             var creatureRulesFile = settings.UseZEditConfiguration ? "enemy_rules_zedit.json" : "enemy_rules_synthesis.json";
+            var keywordsRulesFile = "keywords_rules.json";
 
             //set up rules
             var creatureRulesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, creatureRulesFile);
+            var keywordsRulesFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, keywordsRulesFile);
 
             if (!File.Exists(creatureRulesPath))
             {
@@ -71,6 +73,7 @@ namespace EnemyReleveler
             }
 
             Dictionary<string, int[][]> enemyRules = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(File.ReadAllText(creatureRulesPath));
+            Dictionary<string, int[][]> keywordRules = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(File.ReadAllText(keywordsRulesFilePath));
 
             if (settings.PrintDebugOutput)
             {
@@ -104,6 +107,16 @@ namespace EnemyReleveler
                     {
                         skip = false;
                         rule = enemyRules[faction];
+                    } else {
+                        foreach (var enemyRule in keywordRules)
+                        {
+                            if (faction.ToLower().Contains(enemyRule.Key.ToLower()))
+                            {
+                                skip = false;
+                                rule = keywordRules[enemyRule.Key];
+                                break;
+                            }
+                        }
                     }
                     if (skip == false) break;
                 }
