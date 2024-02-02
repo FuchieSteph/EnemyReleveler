@@ -175,10 +175,16 @@ namespace EnemyReleveler
 
             if (newLevel < 1)
             {
-                if (levelType == LevelType.Level) lowPoweredNpcs.Add(npc.EditorID ?? "");
+                if (levelType == LevelType.Level) {
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                    lowPoweredNpcs.Add(npcInfo);
+                }
                 newLevel = 1;
             }
-            if (newLevel > 100 & levelType == LevelType.Level) highPoweredNpcs.Add(npc.EditorID ?? "");
+            if (newLevel > 100 & levelType == LevelType.Level) {
+                string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                highPoweredNpcs.Add(npcInfo);
+            }
 
             newLevel += settings.GlobalOffset;
 
