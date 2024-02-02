@@ -113,7 +113,7 @@ namespace EnemyReleveler
                     } else {
                         foreach (var enemyRule in keywordRules)
                         {
-                            if (faction.ToLower().Contains(enemyRule.Key.ToLower()) && !enemyRule.Value.Exclusions.Any(excl => faction.Contains(excl.ToLower())))
+                            if (faction.ToLower().Contains(enemyRule.Key.ToLower()) && !enemyRule.Value.Exclusions.Any(excl => faction.ToLower().Contains(excl.ToLower())))
                             {
                                 skip = false;
                                 rule = enemyRule.Value.Rules;
