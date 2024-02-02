@@ -90,7 +90,8 @@ namespace EnemyReleveler
             foreach (var getter in state.LoadOrder.PriorityOrder.Npc().WinningOverrides())
             {
                 //filter NPCs
-                if (npcsToIgnore.Contains(getter))
+                if (npcsToIgnore.Contains(getter)
+                    || getter.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Stats))
                 {
                     continue;
                 }
