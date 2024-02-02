@@ -38,6 +38,7 @@ namespace EnemyReleveler
             Skyrim.Npc.Breya,
             Skyrim.Npc.dunHunterBear,
             Dawnguard.Npc.DLC1HowlSummonWerewolf,
+            Skyrim.Npc.Orgnar
         };
 
         public static int[][] rule = new int[][]{
@@ -156,8 +157,9 @@ namespace EnemyReleveler
                     break;
                 case LevelType.Level:
                     if (npc.Configuration.Level is INpcLevelGetter level) currentLevel = level.Level;
-                    if (currentLevel < rule[0][0]) underleveledNpcs.Add(npc.EditorID ?? "");
-                    if (currentLevel > rule[0][1]) overleveledNpcs.Add(npc.EditorID ?? "");
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                    if (currentLevel < rule[0][0]) underleveledNpcs.Add(npcInfo);
+                    if (currentLevel > rule[0][1]) overleveledNpcs.Add(npcInfo);
                     break;
                 default:
                     break;
