@@ -38,7 +38,8 @@ namespace EnemyReleveler
             Skyrim.Npc.Breya,
             Skyrim.Npc.dunHunterBear,
             Dawnguard.Npc.DLC1HowlSummonWerewolf,
-            Skyrim.Npc.Orgnar
+            Skyrim.Npc.Orgnar,
+            Skyrim.Npc.Horgeir,
         };
 
         public static int[][] rule = new int[][]{
@@ -74,7 +75,7 @@ namespace EnemyReleveler
             }
 
             Dictionary<string, int[][]> enemyRules = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(File.ReadAllText(creatureRulesPath));
-            Dictionary<string, int[][]> keywordRules = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(File.ReadAllText(keywordsRulesFilePath));
+            Dictionary<string, KeywordRule> keywordRules = JsonConvert.DeserializeObject<Dictionary<string, KeywordRule>>(File.ReadAllText(keywordsRulesFilePath));
 
             if (settings.PrintDebugOutput)
             {
@@ -103,7 +104,6 @@ namespace EnemyReleveler
                 foreach (var rank in getter.Factions)
                 {
                     if (!rank.Faction.TryResolve(state.LinkCache, out var factionRecord)) continue;
-                    
                     faction = factionRecord.EditorID ?? "";
                     
                     if (enemyRules.ContainsKey(faction))
@@ -113,10 +113,10 @@ namespace EnemyReleveler
                     } else {
                         foreach (var enemyRule in keywordRules)
                         {
-                            if (faction.ToLower().Contains(enemyRule.Key.ToLower()))
+                            if (faction.ToLower().Contains(enemyRule.Key.ToLower()) && !enemyRule.Value.Exclusions.Any(excl => faction.Contains(excl.ToLower())))
                             {
                                 skip = false;
-                                rule = keywordRules[enemyRule.Key];
+                                rule = enemyRule.Value.Rules;
                                 break;
                             }
                         }
@@ -157,7 +157,7 @@ namespace EnemyReleveler
                     break;
                 case LevelType.Level:
                     if (npc.Configuration.Level is INpcLevelGetter level) currentLevel = level.Level;
-                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
                     if (currentLevel < rule[0][0]) underleveledNpcs.Add(npcInfo);
                     if (currentLevel > rule[0][1]) overleveledNpcs.Add(npcInfo);
                     break;
@@ -176,13 +176,13 @@ namespace EnemyReleveler
             if (newLevel < 1)
             {
                 if (levelType == LevelType.Level) {
-                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
                     lowPoweredNpcs.Add(npcInfo);
                 }
                 newLevel = 1;
             }
             if (newLevel > 100 & levelType == LevelType.Level) {
-                string npcInfo = $"{npc.FormKey}: {npc.EditorID}";
+                string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
                 highPoweredNpcs.Add(npcInfo);
             }
 
@@ -250,3 +250,15 @@ namespace EnemyReleveler
     }
 }
 
+public class KeywordRule
+{
+    public int[][] Rules { get; set; }
+    public List<string> Exclusions { get; set; } = new List<string>();
+
+    // Constructor
+    public KeywordRule()
+    {
+        Rules = new int[0][]; // Initialize with an empty array.
+        Exclusions = new List<string>(); // Initialize with an empty list.
+    }
+}
