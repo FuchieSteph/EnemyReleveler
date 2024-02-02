@@ -1,6 +1,6 @@
 {
     "Bandit": {
-        "rules": [[1, 28], [4, 16]],
+        "rules": [[1, 50], [6, 25]],
         "exclusions": []
     },
     "Thief": {
@@ -20,7 +20,7 @@
         "exclusions": []
     },
     "Bear": {
-        "rules": [[1, 20], [14, 22]],
+        "rules": [[1, 150], [14, 22]],
         "exclusions": []
     },
     "Chaurus": {
@@ -48,7 +48,7 @@
         "exclusions": ["TrollsInn"]
     },
     "Spider": {
-        "rules": [[1, 17], [1, 6]],
+        "rules": [[1, 40], [1, 6]],
         "exclusions": []
     },
     "UndeadGuardian": {
@@ -60,7 +60,7 @@
         "exclusions": []
     },
     "Wolf": {
-        "rules": [[1, 6], [2, 6]],
+        "rules": [[1, 20], [2, 6]],
         "exclusions": []
     },
     "Giant": {
@@ -84,7 +84,7 @@
         "exclusions": []
     },
     "Skeever": {
-        "rules": [[1, 7], [1, 3]],
+        "rules": [[1, 30], [1, 3]],
         "exclusions": []
     },
     "Skeleton": {
@@ -96,7 +96,7 @@
         "exclusions": []
     },
     "Spriggan": {
-        "rules": [[1, 30], [8, 21]],
+        "rules": [[1, 50], [8, 21]],
         "exclusions": []
     },
     "Werewolf": {
@@ -120,7 +120,7 @@
         "exclusions": []
     },
     "Thalmor": {
-        "rules": [[1, 50], [20, 45]],
+        "rules": [[1, 150], [20, 45]],
         "exclusions": []
     },
     "OrcFriend": {
@@ -132,11 +132,11 @@
         "exclusions": []
     },
     "HunterPrey": {
-        "rules": [[1, 10], [1, 10]],
+        "rules": [[1, 15], [1, 10]],
         "exclusions": []
     },
 	"Hunter": {
-        "rules": [[5, 50], [22, 50]],
+        "rules": [[1, 50], [22, 50]],
         "exclusions": []
     },
     "MoragTong": {
@@ -144,7 +144,7 @@
         "exclusions": []
     },
     "Riekling": {
-        "rules": [[6, 90], [14, 90]],
+        "rules": [[1, 90], [14, 90]],
         "exclusions": []
     },
     "RavenRockGuard": {
@@ -160,11 +160,11 @@
         "exclusions": []
     },
     "Horker": {
-        "rules": [[3, 25], [8, 16]],
+        "rules": [[3, 30], [8, 16]],
         "exclusions": []
     },
     "VigilantOfStendarr": {
-        "rules": [[5, 30], [18, 27]],
+        "rules": [[1, 30], [18, 27]],
         "exclusions": []
     },
     "SilverHand": {
@@ -172,15 +172,15 @@
         "exclusions": []
     },
     "Imperial": {
-        "rules": [[1, 15], [10, 30]],
+        "rules": [[1, 50], [10, 30]],
         "exclusions": []
     },
     "Sons": {
-        "rules": [[1, 15], [10, 30]],
+        "rules": [[1, 20], [10, 30]],
         "exclusions": []
     },
     "Guard": {
-        "rules": [[1, 50], [10, 25]],
+        "rules": [[1, 80], [10, 25]],
         "exclusions": []
     },
     "Dremora": {
