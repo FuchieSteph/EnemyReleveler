@@ -10,7 +10,7 @@
 	"DaedraFaction": [[1, 65], [5, 65]],
 	"DogFaction": [[2, 25], [4, 12]],   
 	"TrollFaction": [[14, 22], [20, 28]],
-	"SpiderFaction": [[1, 50], [1, 6]],
+	"SpiderFaction": [[1, 50], [1, 15]],
 	"DLC1UndeadGuardianFaction": [[13, 43], [40, 64]],
 	"HagravenFaction": [[4, 50], [24, 50]],
 	"WolfFaction": [[1, 6], [2, 6]],
