@@ -100,6 +100,7 @@ namespace EnemyReleveler
 
                 bool skip = true;
                 var faction = "";
+                var ruleName = "";
 
                 foreach (var rank in getter.Factions)
                 {
@@ -110,6 +111,7 @@ namespace EnemyReleveler
                     {
                         skip = false;
                         rule = enemyRules[faction];
+                        ruleName = faction
                     } else {
                         foreach (var enemyRule in keywordRules)
                         {
@@ -117,6 +119,7 @@ namespace EnemyReleveler
                             {
                                 skip = false;
                                 rule = enemyRule.Value.Rules;
+                                ruleName = enemyRule.Key.ToLower();
                                 break;
                             }
                         }
@@ -130,12 +133,12 @@ namespace EnemyReleveler
                 var npc = getter.DeepCopy();
                 if (npc.Configuration.Level is IPcLevelMult)
                 {
-                    EditValue(npc, LevelType.MinLevel, rule, settings, faction);
-                    EditValue(npc, LevelType.MaxLevel, rule, settings, faction);
+                    EditValue(npc, LevelType.MinLevel, rule, settings, faction, ruleName);
+                    EditValue(npc, LevelType.MaxLevel, rule, settings, faction, ruleName);
                 }
                 else
                 {
-                    EditValue(npc, LevelType.Level, rule, settings, faction);
+                    EditValue(npc, LevelType.Level, rule, settings, faction, ruleName);
                 }
                 state.PatchMod.Npcs.GetOrAddAsOverride(npc);
             }
@@ -143,7 +146,7 @@ namespace EnemyReleveler
         }
 
 
-        public static void EditValue(INpc npc, LevelType levelType, int[][] rule, Settings settings, string faction)
+        public static void EditValue(INpc npc, LevelType levelType, int[][] rule, Settings settings, string faction, string ruleName)
         {
             decimal currentLevel = 1;
             switch (levelType)
@@ -157,7 +160,7 @@ namespace EnemyReleveler
                     break;
                 case LevelType.Level:
                     if (npc.Configuration.Level is INpcLevelGetter level) currentLevel = level.Level;
-                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}, Matched Faction: {ruleName}, Current Max Level: {currentLevel}, Expected Max Level: {rule[0][1]}";
                     if (currentLevel < rule[0][0]) underleveledNpcs.Add(npcInfo);
                     if (currentLevel > rule[0][1]) overleveledNpcs.Add(npcInfo);
                     break;
@@ -176,13 +179,13 @@ namespace EnemyReleveler
             if (newLevel < 1)
             {
                 if (levelType == LevelType.Level) {
-                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
+                    string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}, Matched Faction: {ruleName}, Level:{newLevel}";
                     lowPoweredNpcs.Add(npcInfo);
                 }
                 newLevel = 1;
             }
             if (newLevel > 100 & levelType == LevelType.Level) {
-                string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction}";
+                string npcInfo = $"{npc.FormKey}: {npc.EditorID}, Faction: {faction},  Matched Faction: {ruleName},  Level: {newLevel}";
                 highPoweredNpcs.Add(npcInfo);
             }
 
