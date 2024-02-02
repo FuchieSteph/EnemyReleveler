@@ -90,8 +90,7 @@ namespace EnemyReleveler
             foreach (var getter in state.LoadOrder.PriorityOrder.Npc().WinningOverrides())
             {
                 //filter NPCs
-                if (npcsToIgnore.Contains(getter)
-                    || getter.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Stats))
+                if (npcsToIgnore.Contains(getter))
                 {
                     continue;
                 }
@@ -102,7 +101,9 @@ namespace EnemyReleveler
                 foreach (var rank in getter.Factions)
                 {
                     if (!rank.Faction.TryResolve(state.LinkCache, out var factionRecord)) continue;
+                    
                     faction = factionRecord.EditorID ?? "";
+                    
                     if (enemyRules.ContainsKey(faction))
                     {
                         skip = false;
