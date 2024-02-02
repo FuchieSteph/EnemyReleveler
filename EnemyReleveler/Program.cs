@@ -111,7 +111,7 @@ namespace EnemyReleveler
                     {
                         skip = false;
                         rule = enemyRules[faction];
-                        ruleName = faction
+                        ruleName = faction;
                     } else {
                         foreach (var enemyRule in keywordRules)
                         {
