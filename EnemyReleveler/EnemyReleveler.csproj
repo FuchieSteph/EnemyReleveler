@@ -21,6 +21,9 @@
     <None Update="enemy_rules_synthesis.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="keywords_rules.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="enemy_rules_zedit.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
